@@ -25,7 +25,7 @@ const Topbar = () => {
         borderRadius="3px"
         sx={{ width: '300px', marginRight: '10px' }}
       >
-        <InputBase sx={{ ml: 1, flex: 1 }} placeholder="Search" />
+        <InputBase sx={{ ml: 2, flex: 1 }} placeholder="Search" />
         <IconButton type="button" sx={{ p: 1 }}>
           <SearchIcon />
         </IconButton>
