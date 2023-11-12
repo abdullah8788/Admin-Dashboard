@@ -73,7 +73,9 @@ const Side = () => {
             }}
           >
             {!isCollapsed && (
-              <Box
+              <Box  
+
+
                 display="flex"
                 justifyContent="space-between"
                 alignItems="center"
@@ -94,29 +96,34 @@ const Side = () => {
               <Box display="flex" justifyContent="center" alignItems="center">
                 <img
                   alt="profile-user"
+
+
                   width="100px"
                   height="100px"
                   src={`../../assets/user.png`}
                   style={{ cursor: "pointer", borderRadius: "50%" }}
                 />
               </Box>
-              <Box textAlign="center">
+              <Box textAlign="center" 
+              >
                 <Typography
                   variant="h2"
                   color={colors.grey[100]}
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  Ed Roh
+                  Abdullah Jan
                 </Typography>
-                <Typography variant="h5" color={colors.greenAccent[500]}>
-                  VP Fancy Admin
+                <Typography 
+                variant="h5" color={colors.greenAccent[500]}>
+                  Admin panel
                 </Typography>
               </Box>
             </Box>
           )}
 
-          <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+          <Box paddingLeft=
+          {isCollapsed ? undefined : "10%"}>
             <Item
               title="Dashboard"
               to="/"
@@ -140,6 +147,7 @@ const Side = () => {
               setSelected={setSelected}
             />
             <Item
+            
               title="Contacts Information"
               to="/contacts"
               icon={<ContactsOutlinedIcon />}

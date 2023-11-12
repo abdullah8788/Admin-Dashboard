@@ -6,6 +6,8 @@ import Side from "./scenes/global/Side";
 import { Route,Routes } from "react-router-dom";
 // import { Dashboard } from "@mui/icons-material";
 import Dashboard from "./scenes/dashboard";
+import Team from "./scenes/team";
+import Invoices from "./scenes/invoices"
 function App() {
 const [theme,colorMode]= useMode();
 
@@ -21,6 +23,8 @@ const [theme,colorMode]= useMode();
       <Topbar/>
       <Routes>
         <Route path="/" element={<Dashboard/>}/>
+        <Route path="/team" element={<Team/>}/>
+        <Route path="/invoices" element={<Invoices/>}/>
       </Routes>
       </main>
       </div>
