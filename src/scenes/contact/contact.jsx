@@ -1,7 +1,7 @@
 import { Box, Typography, useTheme,useMediaQuery  } from "@mui/material";
 import { DataGrid } from '@mui/x-data-grid';
 import { tokens } from "../../theme";
-import { mockDataInvoices } from "../../data/mockData";
+import { mockDataContacts } from "../../data/mockData";
 
 import Header from "../../components/Header";
 import { styled } from "@mui/system";
@@ -13,7 +13,7 @@ const ResponsiveBox = styled(Box)(({ theme }) => ({
     padding: theme.spacing(4),
   },
 }));
-const Invoices=()=>{
+const Contacts=()=>{
 const theme = useTheme();
  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 const colors = tokens(theme.palette.mode);
@@ -57,11 +57,11 @@ const colors = tokens(theme.palette.mode);
 
   return (
      <ResponsiveBox>
-      <Header title="Invoices" subtitle="Managing the Invoices Members" />
+      <Header title="Contacts" subtitle="Managing the Contacts Members" />
       <Box m={isSmallScreen ? "20px 0" : "40px 0 0 0"} height="75vh">
-        <DataGrid checkboxSelection rows={mockDataInvoices} columns={columns} />
+        <DataGrid checkboxSelection rows={mockDataContacts} columns={columns} />
       </Box>
     </ResponsiveBox>
   );
 };
-export default Invoices;
+export default Contacts;

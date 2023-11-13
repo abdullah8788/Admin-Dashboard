@@ -1,4 +1,4 @@
-import { Box, IconButton, useTheme } from "@mui/material";
+import { Box, IconButton, useTheme, useMediaQuery } from "@mui/material";
 import { useContext } from "react";
 import { ColorModeContext, tokens } from "../../theme";
 import InputBase from "@mui/material/InputBase";
@@ -13,17 +13,22 @@ const Topbar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const colorMode = useContext(ColorModeContext);
-
- 
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <Box display="flex" justifyContent="space-between" p={2}>
+    <Box
+      display="flex"
+      flexDirection={isSmallScreen ? "column" : "row"}
+      justifyContent="space-between"
+      p={2}
+    >
       {/* SEARCH BAR */}
       <Box
         display="flex"
         backgroundColor={colors.primary[400]}
         borderRadius="3px"
-        sx={{ width: '300px', marginRight: '10px' }}
+        mb={isSmallScreen ? 2 : 0}
+        width={isSmallScreen ? "100%" : "auto"}
       >
         <InputBase sx={{ ml: 2, flex: 1 }} placeholder="Search" />
         <IconButton type="button" sx={{ p: 1 }}>
@@ -32,7 +37,7 @@ const Topbar = () => {
       </Box>
 
       {/* ICONS */}
-      <Box display="flex">
+      <Box display="flex" ml={isSmallScreen ? 0 : 2}>
         <IconButton onClick={colorMode.toggleColorMode}>
           {theme.palette.mode === "dark" ? (
             <DarkModeOutlinedIcon />
@@ -40,19 +45,22 @@ const Topbar = () => {
             <LightModeOutlinedIcon />
           )}
         </IconButton>
-        <IconButton>
-          <NotificationsOutlinedIcon />
-        </IconButton>
-        <IconButton>
-          <SettingsOutlinedIcon />
-        </IconButton>
-        <IconButton>
-          <PersonOutlinedIcon />
-        </IconButton>
+        {!isSmallScreen && (
+          <>
+            <IconButton>
+              <NotificationsOutlinedIcon />
+            </IconButton>
+            <IconButton>
+              <SettingsOutlinedIcon />
+            </IconButton>
+            <IconButton>
+              <PersonOutlinedIcon />
+            </IconButton>
+          </>
+        )}
       </Box>
     </Box>
   );
 };
-
 
 export default Topbar;

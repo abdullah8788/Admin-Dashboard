@@ -1,4 +1,4 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useTheme,useMediaQuery  } from "@mui/material";
 import { DataGrid } from '@mui/x-data-grid';
 import { tokens } from "../../theme";
 import { mockDataTeam } from "../../data/mockData";
@@ -6,9 +6,17 @@ import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettin
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import Header from "../../components/Header";
+import { styled } from "@mui/system";
 
+const ResponsiveBox = styled(Box)(({ theme }) => ({
+  padding: theme.spacing(2),
+  [theme.breakpoints.up("sm")]: {
+    padding: theme.spacing(4),
+  },
+}));
 const Team=()=>{
 const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 const colors = tokens(theme.palette.mode);
  const columns = [
     { field: "id", headerName: "ID" },
@@ -69,17 +77,12 @@ const colors = tokens(theme.palette.mode);
   ];
 
   return (
-    <Box m="20px">
-      <Header title="TEAM" subtitle="Managing the Team Members" />
-      <Box
-         m="40px 0 0 0"
-        height="75vh"
-        
-        
-      >
+    <ResponsiveBox>
+      <Header title="team" subtitle="Managing the team Members" />
+      <Box m={isSmallScreen ? "20px 0" : "40px 0 0 0"} height="75vh">
         <DataGrid checkboxSelection rows={mockDataTeam} columns={columns} />
       </Box>
-    </Box>
+    </ResponsiveBox>
   );
 };
 export default Team;
